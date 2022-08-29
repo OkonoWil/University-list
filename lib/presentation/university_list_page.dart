@@ -15,25 +15,26 @@ class _UniversityListPageState extends State<UniversityListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Expanded(child: Consumer<UniversityProvider>(
-              builder: (context, value, child) {
-                if (value.university == null) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                var university = value.university!;
-                return ListView.builder(
-                  itemCount: university.length,
-                  itemBuilder: (context, index) {
-                    var item = university[index];
-                    return ItemTile(item: item);
+        child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Expanded(
+                flex: 1,
+                child: Consumer<UniversityProvider>(
+                  builder: (context, value, child) {
+                    if (value.university == null) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    var university = value.university!;
+                    return ListView.builder(
+                      itemCount: university.length,
+                      itemBuilder: (context, index) {
+                        var item = university[index];
+                        return ItemTile(item: item);
+                      },
+                    );
                   },
-                );
-              },
-            ))
-          ],
-        ),
+                ))),
       ),
     );
   }

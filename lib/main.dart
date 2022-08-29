@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:university_list/shared/service_locator.dart';
 import 'package:university_list/presentation/university_list_page.dart';
-import 'package:dio/dio.dart';
+import 'package:university_list/business_logic/university_provider.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -10,12 +13,15 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider<UniversityProvider>(
+      create: ((context) => getIt.get<UniversityProvider>()..loadItems()),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const UniversityListPage(),
       ),
-      home: const UniversityListPage(),
     );
   }
 }

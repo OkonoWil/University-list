@@ -7,8 +7,7 @@ class UniversityRepository {
 
   Future<List<UniversityModel>> find() async {
     List<UniversityModel> results = [];
-    Response response = await http
-        .get("http://universities.hipolabs.com/search?country=france");
+    Response response = await http.get("/search?country=france");
 
     return results;
   }
