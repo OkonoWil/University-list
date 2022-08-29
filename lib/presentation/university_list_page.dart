@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../business_logic/university_provider.dart';
+import 'package:university_list/presentation/widgets/item_tile.dart';
 
 class UniversityListPage extends StatefulWidget {
   const UniversityListPage({Key? key}) : super(key: key);
@@ -21,8 +22,14 @@ class _UniversityListPageState extends State<UniversityListPage> {
                 if (value.university == null) {
                   return const Center(child: CircularProgressIndicator());
                 }
-                var university = value.university;
-                return const Text('Ok');
+                var university = value.university!;
+                return ListView.builder(
+                  itemCount: university.length,
+                  itemBuilder: (context, index) {
+                    var item = university[index];
+                    return ItemTile(item: item);
+                  },
+                );
               },
             ))
           ],
