@@ -7,7 +7,7 @@ final getIt = GetIt.instance;
 
 void setupLocator() {
   getIt.registerSingleton<Dio>(
-    Dio(BaseOptions(baseUrl: "http://universities.hipolabs.com/")),
+    Dio(BaseOptions(baseUrl: "http://universities.hipolabs.com")),
   );
   getIt.registerSingleton<UniversityRepository>(
     UniversityRepository(http: getIt.get<Dio>()),

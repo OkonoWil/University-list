@@ -21,7 +21,7 @@ class UniversityModel {
         country: json['country'],
         alphaTwoCode: json['alpha_two_code'],
         stateProvince: json['state-province'],
-        domains: json['domains'],
-        webPages: json['web_pages']);
+        domains: List<String?>.from(json['domains']),
+        webPages: List<String?>.from(json['web_pages']));
   }
 }

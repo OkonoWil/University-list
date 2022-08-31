@@ -7,7 +7,11 @@ class UniversityRepository {
 
   Future<List<UniversityModel>> find() async {
     List<UniversityModel> results = [];
-    Response response = await http.get("/search?country=france");
+    Response response = await http.get("/search?country=cameroon");
+    for (int i = 0; i < response.data.length; i++) {
+      var jsonItem = response.data[i];
+      results.add(UniversityModel.fromJson(jsonItem));
+    }
 
     return results;
   }
