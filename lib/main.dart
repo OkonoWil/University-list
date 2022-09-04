@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    String country = '';
     return ChangeNotifierProvider<UniversityProvider>(
-      create: ((context) => getIt.get<UniversityProvider>()..loadItems()),
+      create: ((context) => getIt.get<UniversityProvider>()
+        ..loadItems(country == '' ? 'cameroon' : country)),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

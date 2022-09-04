@@ -10,8 +10,8 @@ class UniversityProvider extends ChangeNotifier {
   List<UniversityModel>? _university;
   List<UniversityModel>? get university => _university;
 
-  loadItems() async {
-    _university = await universityRepository.find();
+  loadItems(String country) async {
+    _university = await universityRepository.find(country);
     notifyListeners();
   }
 }
