@@ -7,11 +7,21 @@ class UniversityProvider extends ChangeNotifier {
   UniversityProvider({
     required this.universityRepository,
   });
+  bool isLoading = false;
   List<UniversityModel>? _university;
+  List<UniversityModel>? _universityList;
+  List<UniversityModel>? get universityList => _universityList;
   List<UniversityModel>? get university => _university;
 
   loadItems(String country) async {
     _university = await universityRepository.find(country);
+    notifyListeners();
+  }
+
+  loadItems2(String country) async {
+    isLoading = true;
+    _universityList = await universityRepository.find(country);
+    isLoading = false;
     notifyListeners();
   }
 }

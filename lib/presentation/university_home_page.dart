@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:university_list/presentation/screens/univeristy_search.dart';
 import 'package:university_list/presentation/screens/university_list_page.dart';
 
 class UniversityHome extends StatefulWidget {
@@ -13,14 +14,12 @@ class _UniversityHomeState extends State<UniversityHome>
   late TabController _tabController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _tabController.dispose();
     super.dispose();
   }
@@ -38,7 +37,7 @@ class _UniversityHomeState extends State<UniversityHome>
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
-          labelColor: Color.fromARGB(255, 255, 153, 0),
+          labelColor: const Color.fromARGB(255, 255, 153, 0),
           unselectedLabelColor: Colors.white,
           tabs: const [
             Tab(
@@ -52,9 +51,9 @@ class _UniversityHomeState extends State<UniversityHome>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           UniversityListPage(),
-          UniversityListPage(),
+          Country(),
         ],
       ),
     );

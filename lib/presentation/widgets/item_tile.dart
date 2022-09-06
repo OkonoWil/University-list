@@ -7,9 +7,11 @@ class ItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(item.name),
-      subtitle: Text(item.country),
+    return Card(
+      child: ListTile(
+        title: Text(item.name),
+        subtitle: Text(item.country),
+      ),
     );
   }
 }
